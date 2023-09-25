@@ -52,9 +52,6 @@ function ModalForm() {
       body: JSON.stringify(dataToSend),
     })
       .then((response) => response.json())
-      .then((data) => {
-        console.log("Respuesta del servidor:", data);
-      })
       .catch((error) => {
         alert("Hubo un error en la solicitud.");
       });

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import ModalForm from "./ModalForm";
 import Footer from "./Footer";
+import Publicidad from "./Publicidad";
 
 function Perfil() {
   const navigate = useNavigate();
@@ -24,9 +25,7 @@ function Perfil() {
       .then((response) => response.json())
       .then((data) => {
         if (data.response) {
-          console.log("Clase eliminada con éxito.");
           setDatosUsuario(data.datos);
-          console.log(data);
         } else {
           console.error("Error al eliminar la clase.");
         }
@@ -95,8 +94,10 @@ function Perfil() {
             </table>
           </div>
         </div>
-        <div>
-          <h2>Avisos:</h2>
+        <div className="Seccion-publicidad">
+          <h2>LO NUEVO:</h2>
+          <h3>Adquierelo en el gimnasio.</h3>
+          <Publicidad/>
         </div>
       </div>
       <Footer />

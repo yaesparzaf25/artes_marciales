@@ -12,7 +12,7 @@ function Footer() {
           </div>
           <div className="contacto">
             <h3>Contacto</h3>
-            <p>Puedes contactarnos en:</p>
+            <p>Cualquier duda:</p>
             <p><img src={IconoWapp} alt="Icono de WhatsApp" /> (443)-491-21-36</p>
           </div>
         </div>
