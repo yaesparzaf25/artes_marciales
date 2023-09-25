@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 function SignUp() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     nombre: "",
     apellido: "",
@@ -28,7 +29,11 @@ function SignUp() {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("Respuesta del servidor:", data);
+        if(data.response==='ok'){
+          navigate(`/`);
+        } else {
+          alert("No se encontró el usuario");
+        }
       })
       .catch((error) => {
         console.error("Error en la solicitud:", error);

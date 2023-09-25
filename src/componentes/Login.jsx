@@ -1,16 +1,19 @@
 import React, { useState } from "react";
+import { useNavigate, Link } from "react-router-dom"; // Importa Link
 import SignUp from "./SignUp";
 
 function Login() {
-  const [showLogin, setShowLogin] = useState(true);
+  const navigate = useNavigate();
+  const [mostrarLogin, setMostrarLogin] = useState(true);
 
-  const handleSignUpClick = () => {
-    setShowLogin(false);
+  const manejarClickRegistro = () => {
+    // Redirige a la ruta /signup al hacer clic en "INSCRIBIRSE"
+    navigate("/signup");
   };
 
-  const handleIngresarClick = () => {
-    const idInput = document.getElementById("id-input");
-    const userId = idInput.value;
+  const manejarClickIngresar = () => {
+    const inputId = document.getElementById("id-input");
+    const userId = inputId.value;
 
     fetch(`http://localhost:8000/api/clientes/${userId}`, {
       method: "POST",
@@ -19,30 +22,27 @@ function Login() {
       },
       body: JSON.stringify({ id: userId }),
     })
-      .then((response) => response.json())
+      .then((respuesta) => respuesta.json())
       .then((data) => {
-        console.log("Respuesta del servidor:", data);
-
-        if (data.existe) {
-          alert("Usuario encontrado en la base de datos.");
+        if (data.id) {
+          navigate(`/profile/${data.nombre}`);
         } else {
-          alert("Usuario no encontrado en la base de datos.");
+          alert("No se encontró el usuario");
         }
       })
       .catch((error) => {
-        console.error("Error en la solicitud:", error);
+        alert("404. Hay un error en la solicitud. No se encontró el usuario");
       });
   };
 
   return (
     <div className="App">
-      {showLogin ? (
         <div className="index">
           <h1>REGISTRO DE CLASES</h1>
           <div className="principal">
             <div className="botones">
               <form className="write-id">
-                <h2>¿Ya formas parte de nuestro equipo?</h2>
+                <h2>¿Ya eres parte de nuestro equipo?</h2>
                 <div className="mb-3">
                   <input
                     type="text"
@@ -53,7 +53,7 @@ function Login() {
                   <button
                     type="button"
                     className="boton-id"
-                    onClick={handleIngresarClick}
+                    onClick={manejarClickIngresar}
                   >
                     INGRESAR
                   </button>
@@ -61,20 +61,19 @@ function Login() {
               </form>
               <div className="nuevo">
                 <h2>¿Eres nuevo?</h2>
-                <button
-                  type="button"
-                  className="btn btn-primary"
-                  onClick={handleSignUpClick}
-                >
-                  INSCRIBIRSE
-                </button>
+                <Link to="/signup"> {/* Utiliza Link para ir a la ruta /signup */}
+                  <button
+                    type="button"
+                    className="btn btn-primary"
+                    onClick={manejarClickRegistro}
+                  >
+                    INSCRIBIRSE
+                  </button>
+                </Link>
               </div>
             </div>
           </div>
         </div>
-      ) : null}
-
-      {showLogin || <SignUp />}
     </div>
   );
 }

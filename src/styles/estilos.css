@@ -33,7 +33,7 @@
 .signup-form input[type="number"],
 .signup-form select {
   width: 100%;
-  padding: 10px;
+  padding: 5px;
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 16px;
@@ -57,4 +57,13 @@
 
 .signup-form button:hover {
   background-color: #0056b3;
+}
+
+
+.head-perfil{
+  display: flex;
+  background-image: url("../assets/images/background/vendas.jpg");
+  background-repeat: no-repeat;
+  background-size:contain;
+  height: 100vh; 
 }
