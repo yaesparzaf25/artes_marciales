@@ -11,9 +11,6 @@
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 .index h1{
-  /* align-items: center; */
-  /* justify-content: center; */
-  /* text-align: center; */
   color: rgb(255, 255, 255);
 
 }
@@ -58,12 +55,7 @@
   margin-bottom: 20px;
 }
 
-h2 {
-  font-size: 20px;
-  margin-bottom: 10px;
-  text-align: center;
-  padding-bottom: 10%;
-}
+
 
 input[type="text"] {
   width: 100%;

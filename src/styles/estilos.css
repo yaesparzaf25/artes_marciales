@@ -62,8 +62,153 @@
 
 .head-perfil{
   display: flex;
-  background-image: url("../assets/images/background/vendas.jpg");
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../assets/images/background/guantes_chocando.jpg");
   background-repeat: no-repeat;
-  background-size:contain;
-  height: 100vh; 
+  background-size:cover;
+  background-position: center;
+  height: 50vh;
+  text-transform: uppercase;
+  color: #ffffff;
+  
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-weight:bolder; 
 }
+
+.head-perfil h1{
+  font-size: 60px;
+}
+
+.contenedor-info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.info-perfil {
+  flex: 1;
+  max-width: 30%;
+  margin-right: 10px;
+  border: 2px solid #0000006e; 
+  padding: 10px;
+
+}
+.info-perfil p{
+  font-size: 20px;
+}
+
+.editar-eliminar {
+  flex: 2;
+  margin-left: 10px;
+  text-align: left;
+}
+
+
+
+.boton-editar{
+margin-top: 10px;
+
+}
+
+
+/*ModalForm*/
+
+.modal-container {
+  max-width: 300px; 
+  margin: 0 auto; 
+  background-color: white;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+
+.modal-overlay {
+  background-color: rgba(0, 0, 0, 0.5); 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000; 
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.date-button {
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  outline: none;
+}
+
+
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  outline: none;
+}
+
+
+button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  margin-right: 10px;
+  cursor: pointer;
+  outline: none;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.boton-form{
+  margin: 20px;
+  background-color: #0056b3;
+} 
+.boton-form:hover{
+  background-color: #000000;
+}
+.tabla {
+  margin-top: 10px;
+}
+
+.tabla table {
+  width: 70%;
+  border-collapse: collapse;
+}
+
+.tabla th,
+.tabla td {
+  padding: 8px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+.tabla th {
+  background-color: #f2f2f2;
+}
+
+.tabla button {
+  padding: 4px 8px;
+  background-color: #870000;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.tabla button:hover {
+  background-color: #ff0000;
+}
+

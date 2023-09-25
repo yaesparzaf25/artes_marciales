@@ -11,8 +11,15 @@ const Calendario = () => {
   const [selectedDate, setSelectedDate] = useState(null);
 
   const handleSelect = ({ start }) => {
-    setSelectedDate(start);
-    setShowCalendar(false);
+    const currentDate = new Date();
+    const selectedDate = new Date(start);
+
+    if (selectedDate >= currentDate) {
+      setSelectedDate(start);
+      setShowCalendar(false);
+    } else {
+      alert('Selecciona una fecha del día de hoy en adelante.');
+    }
   };
 
   const handleOpenCalendar = () => {

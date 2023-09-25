@@ -7,7 +7,6 @@ function Login() {
   const [mostrarLogin, setMostrarLogin] = useState(true);
 
   const manejarClickRegistro = () => {
-    // Redirige a la ruta /signup al hacer clic en "INSCRIBIRSE"
     navigate("/signup");
   };
 
@@ -25,7 +24,7 @@ function Login() {
       .then((respuesta) => respuesta.json())
       .then((data) => {
         if (data.id) {
-          navigate(`/profile/${data.nombre}`);
+          navigate(`/profile/${data.id}`);
         } else {
           alert("No se encontró el usuario");
         }
