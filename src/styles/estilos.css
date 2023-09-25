@@ -212,3 +212,39 @@ button:hover {
   background-color: #ff0000;
 }
 
+
+.footer {
+  background-color: #333;
+  color: #fff;
+  /* padding-bottom: 38px; */
+  height: auto;
+  margin-top: 1.95%;
+}
+
+.container {
+  margin: 0 auto;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.politica,
+.contacto {
+  flex: 1;
+  padding: 5px;
+}
+
+.politica h3,
+.contacto h3 {
+  font-size: 18px;
+}
+
+.contacto img{
+  height: 30px;
+}
+
+
+

@@ -1,15 +1,39 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import ModalForm from "./ModalForm";
+import Footer from "./Footer";
 
 function Perfil() {
   const navigate = useNavigate();
   const { id } = useParams();
   const [datosUsuario, setDatosUsuario] = useState({});
-  const [mostrarCalendario, setMostrarCalendario] = useState(false);
 
-  const abrirCalendario = () => {
-    setMostrarCalendario(true);
+  const eliminarClase = () => {
+    const datosAEliminar = {
+      fecha: datosUsuario.fecha,
+      hora: datosUsuario.hora,
+    };
+
+    fetch(`http://localhost:8000/api/clientes/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(datosAEliminar),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.response) {
+          console.log("Clase eliminada con éxito.");
+          setDatosUsuario(data.datos);
+          console.log(data);
+        } else {
+          console.error("Error al eliminar la clase.");
+        }
+      })
+      .catch((error) => {
+        console.error("Error en la solicitud DELETE:", error);
+      });
   };
 
   useEffect(() => {
@@ -31,10 +55,20 @@ function Perfil() {
       </div>
       <div className="contenedor-info">
         <div className="info-perfil">
-          <h2><strong>TUS DATOS</strong></h2>
-          <p><strong>ID:</strong> {datosUsuario.id}</p>
-          <p><strong>Nombre: </strong>{datosUsuario.nombre} {datosUsuario.apellido}</p>
-          <p><strong>Edad: </strong>{datosUsuario.edad} años</p>
+          <h2>
+            <strong>TUS DATOS</strong>
+          </h2>
+          <p>
+            <strong>ID:</strong> {datosUsuario.id}
+          </p>
+          <p>
+            <strong>Nombre: </strong>
+            {datosUsuario.nombre} {datosUsuario.apellido}
+          </p>
+          <p>
+            <strong>Edad: </strong>
+            {datosUsuario.edad} años
+          </p>
         </div>
         <div className="editar-eliminar">
           <h2>Elige tu clase.</h2>
@@ -54,7 +88,7 @@ function Perfil() {
                   <td>{datosUsuario.fecha}</td>
                   <td>{datosUsuario.hora}</td>
                   <td>
-                    <button>Eliminar</button>
+                    <button onClick={eliminarClase}>Eliminar</button>
                   </td>
                 </tr>
               </tbody>
@@ -65,6 +99,7 @@ function Perfil() {
           <h2>Avisos:</h2>
         </div>
       </div>
+      <Footer />
     </>
   );
 }
