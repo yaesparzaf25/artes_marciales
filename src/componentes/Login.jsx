@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom"; // Importa Link
-import SignUp from "./SignUp";
+import Navbar from "./navbar";
+
 
 function Login() {
   const navigate = useNavigate();
@@ -23,11 +24,14 @@ function Login() {
     })
       .then((respuesta) => respuesta.json())
       .then((data) => {
-        if (data.id) {
+        if(data.nombre==='Arturo'){
+          navigate(`/admin/${data.id}`);
+        }else{
           navigate(`/profile/${data.id}`);
-        } else {
-          alert("No se encontró el usuario");
         }
+         //else {
+        //   alert("No se encontró el usuario");
+        // }
       })
       .catch((error) => {
         alert("404. Hay un error en la solicitud. No se encontró el usuario");
@@ -35,6 +39,8 @@ function Login() {
   };
 
   return (
+    <>
+    <Navbar/>
     <div className="App">
         <div className="index">
           <h1>REGISTRO DE CLASES</h1>
@@ -74,6 +80,7 @@ function Login() {
           </div>
         </div>
     </div>
+    </>
   );
 }
 

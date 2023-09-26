@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import ModalForm from "./ModalForm";
 import Footer from "./Footer";
 import Publicidad from "./Publicidad";
+import Navbar from "./navbar";
 
 function Perfil() {
   const navigate = useNavigate();
@@ -48,6 +49,7 @@ function Perfil() {
 
   return (
     <>
+    <Navbar props={"login"} />
       <div className="head-perfil">
         <h1>¿TODO LISTO, {datosUsuario.nombre}?</h1>
         <h2>¡EMPECEMOS!</h2>

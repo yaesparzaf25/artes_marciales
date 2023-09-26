@@ -1,30 +1,31 @@
-// import React from 'react';
-// import LOGO from '../assets/images/logo.png';
-
-// function Navbar() {
-//   return (
-//     <nav className="navbar">
-//       <img className="logo" src={LOGO} alt="logo" />
-//     </nav>
-//   );
-// }
-
-// export default Navbar;
-
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'; 
 import LOGO from '../assets/images/logo.png';
-import ClienteList from './ClientList'; // Importa el componente ClienteList
 
-function Navbar() {
-  const [mostrarClientes, setMostrarClientes] = useState(false); // Estado para controlar la visibilidad de ClienteList
+function Navbar({ props }) {
+  const [inactivo, setInactivo] = useState(true);
+  const navigate = useNavigate();
 
-  const handleMostrarClientes = () => {
-    setMostrarClientes(true); // Al hacer clic en el botón, establece mostrarClientes en true
+  useEffect(() => {
+    if (props === 'login') {
+      setInactivo(false);
+    }
+  }, [props]);
+
+  const handleLogout = () => {
+    navigate('/');
   };
 
   return (
     <nav className="navbar">
       <img className="logo" src={LOGO} alt="logo" />
+      <button
+        className="btn btn-primary"
+        onClick={handleLogout}
+        disabled={inactivo}
+      >
+        Cerrar Sesión
+      </button>
     </nav>
   );
 }

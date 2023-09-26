@@ -5,15 +5,16 @@ import Perfil from "./componentes/Perfil";
 import SignUp from "./componentes/SignUp";
 import "./styles/estilos.css";
 import "./App.css";
+import PerfilRoot from "./componentes/PerfilRoot";
 
 function App() {
   return (
     <Router>
-      <Navbar />
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/profile/:id" element={<Perfil />} />
+        <Route path="/admin/:id" element={<PerfilRoot />} />
       </Routes>
     </Router>
   );
