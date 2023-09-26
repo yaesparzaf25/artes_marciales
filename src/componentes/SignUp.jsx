@@ -30,7 +30,7 @@ function SignUp() {
       .then((response) => response.json())
       .then((data) => {
         if(data.response==='ok'){
-          navigate(`/`);
+          navigate(`/profile/${data.id}`);
         } else {
           alert("No se encontró el usuario");
         }
